@@ -1,3 +1,9 @@
+import styles from './page.module.css';
+
 export default function Home() {
-  return <h1>WELCOME Frontend Team!</h1>;
+  return (
+    <div className={styles.main}>
+      <h1>Main Page</h1>
+    </div>
+  );
 }
