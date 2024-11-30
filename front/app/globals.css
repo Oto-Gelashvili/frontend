@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+html {
+  font-size: 62.5%;
+}
+:root {
+  /* colors */
+  --blue: #4e53a2;
+  --accent-blue: #544ce6;
+  --white: #fefefe;
+  --black: #000000;
+  --gray: #5e6366;
+  --accent-gray: #777e99;
+  --green: #129c71;
+  --accent-green: #ecfdf5;
+  --gold: #ffaa00;
+  --red: #ec5454;
+
+  /* spacing */
+  --xxs-spacing: 0.8rem;
+  --xs-spacing: 1.6rem;
+  --sm-spacing: 2.4rem;
+  --medium-spacing: 3.2rem;
+  --large-spacing: 4.8rem;
+  --xl-spacing: 6.4rem;
+  --xxl-spacing: 8.4rem;
+
+  /* border-radius */
+  --xxs-radius: 4px;
+  --xs-radius: 8px;
+  --sm-radius: 12px;
+  --medium-radius: 16px;
+  --large-radius: 24px;
+  --xl-radius: 32px;
+  --xxl-radius: 50rem;
+  --circle-radius: 50%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Lexend', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
