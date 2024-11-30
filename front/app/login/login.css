@@ -71,6 +71,8 @@
 .loginPage .passwordGroup .password-input .eye-icon {
   color: var(--gray);
   position: absolute;
+  display: flex;
+  align-items: center;
   top: 50%;
   right: 3%;
   font-size: 1.4rem;
