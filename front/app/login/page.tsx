@@ -26,7 +26,7 @@ export default function Login() {
             </label>
             <input
               className="input"
-              type="text"
+              type="email"
               id="username"
               placeholder="Username"
               required
@@ -39,7 +39,7 @@ export default function Login() {
               <label htmlFor="password" className="label">
                 Password
               </label>
-              <Link href="#" className="forgotPassword">
+              <Link href="/forgot" className="forgotPassword">
                 Forgot Password?
               </Link>
             </div>
