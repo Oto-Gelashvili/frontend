@@ -1,0 +1,55 @@
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.postCard_top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.postCard_bot {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bot_right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    color: var(--gray);
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+.author,
+.replies {
+  font-size: 1rem;
+  color: var(--gray);
+  margin: 4px 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.tag {
+  background-color: var(--accent-blue);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}

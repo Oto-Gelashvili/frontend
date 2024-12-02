@@ -35,8 +35,8 @@
   align-items: center;
   font-size: 2.5rem;
   border-radius: 50px;
-  background-color: var(--blue);
-  color: var(--white);
+  background-color: var(--white);
+  color: var(--blue);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   border: none;
@@ -52,8 +52,8 @@
 
 .tagSuggestions {
   position: absolute;
-  background: var(--white);
-  border: 1px solid var(--white);
+  background: var(--blue);
+  border: 1px solid var(--blue);
   list-style: none;
   margin: 0;
   padding: 0.5rem;
@@ -66,12 +66,13 @@
 .tagSuggestionItem {
   cursor: pointer;
   padding: 0.5rem;
-  color: var(--black);
+  color: var(--white);
   font-size: 1.2rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .tagSuggestionItem:hover {
-  background-color: #f0f0f0;
+  text-shadow: 2px 2px 5px #f0f0f0;
 }
 
 .selectedTags {
@@ -128,6 +129,9 @@
 
   .searchBtnContianer {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .selectedTags {
@@ -137,7 +141,7 @@
   }
 
   .searchButton {
-    width: 100%;
+    width: 40%;
     border-radius: 5px;
   }
 }

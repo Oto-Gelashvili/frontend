@@ -1,0 +1,13 @@
+.reviewsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .reviewsContainer {
+        display: none;
+    }
+}

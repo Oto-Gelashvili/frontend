@@ -106,6 +106,21 @@ a.secondary {
   flex-shrink: 0;
 }
 
+.main_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 4rem;
+}
+
+.post_wrapper {
+  width: 80%;
+}
+
+.review_wrapper {
+  width: 20%;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   a.primary:hover {
@@ -162,5 +177,20 @@ a.secondary {
 @media (prefers-color-scheme: dark) {
   .logo {
     filter: invert();
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main_wrapper {
+    padding: 1rem;
+    margin-top: 6rem;
+  }
+
+  .post_wrapper {
+    width: 100%;
+  }
+
+  .review_wrapper {
+    display: none;
   }
 }
