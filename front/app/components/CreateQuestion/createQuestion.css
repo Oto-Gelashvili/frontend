@@ -6,20 +6,20 @@
   width: 100%;
   min-height: 100vh;
 }
-.submit-form {
+#createQuestion .submit-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
 }
-.third-text {
+#createQuestion .third-text {
   color: var(--blue);
   font-size: 3.2rem;
   font-weight: 600;
   margin-bottom: var(--medium-spacing);
 }
-form {
+#createQuestion form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,21 +27,21 @@ form {
   gap: var(--medium-spacing);
   width: 400px;
 }
-.input-box {
+#createQuestion .input-box {
   height: 40px;
   width: 100%;
   position: relative;
 }
-textarea {
+#createQuestion textarea {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-.desc-input {
+#createQuestion .desc-input {
   height: auto;
 }
 
-.input-box .input {
+#createQuestion .input-box .input {
   display: block;
   width: 100%;
   height: 100%;
@@ -54,7 +54,7 @@ textarea {
   padding-inline: 1.2rem;
 }
 
-.input-box label {
+#createQuestion .input-box label {
   position: absolute;
   top: 50%;
   padding-left: 20px;
@@ -65,8 +65,8 @@ textarea {
   transition: 0.4s;
   pointer-events: none;
 }
-.input-box .input:focus ~ label,
-.input-box .input:valid ~ label {
+#createQuestion .input-box .input:focus ~ label,
+#createQuestion .input-box .input:valid ~ label {
   top: 0px;
   left: 10px;
   background: var(--white);
@@ -76,17 +76,17 @@ textarea {
   transition: 1s;
 }
 
-textarea.input {
+#createQuestion textarea.input {
   resize: none;
   overflow: auto;
   padding-top: 1.2rem;
   min-height: 8.4rem;
 }
-textarea {
+#createQuestion textarea {
   scrollbar-width: none;
 }
 
-.btn {
+#createQuestion .btn {
   display: block;
   background: var(--accent-blue);
   outline: none;
@@ -100,7 +100,7 @@ textarea {
   font-weight: 500;
   letter-spacing: 2px;
 }
-.error-message {
+#createQuestion .error-message {
   display: none;
   color: var(--red);
   font-size: 1.2rem;
@@ -110,13 +110,13 @@ textarea {
   left: 0;
   width: 100%;
 }
-.input-box .input:invalid ~ .error-message {
+#createQuestion .input-box .input:invalid ~ .error-message {
   display: block;
 }
-.tags-input {
+#createQuestion .tags-input {
   height: clamp(40px, 100%, 100%);
 }
-.tags-container {
+#createQuestion .tags-container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -131,7 +131,7 @@ textarea {
   padding: 4px;
 }
 
-.tag {
+#createQuestion .tag {
   display: flex;
   align-items: center;
   background-color: var(--blue);
@@ -142,7 +142,7 @@ textarea {
   gap: 0.4rem;
 }
 
-.tag-delete {
+#createQuestion .tag-delete {
   background: none;
   border: none;
   cursor: pointer;
@@ -151,7 +151,7 @@ textarea {
   color: var(--red);
 }
 
-.tag-input {
+#createQuestion .tag-input {
   flex-grow: 1;
   border: none;
   outline: none;
@@ -159,11 +159,11 @@ textarea {
   font-size: 1.6rem;
 }
 
-.tag-input::placeholder {
+#createQuestion .tag-input::placeholder {
   color: var(--gray);
   text-align: center;
 }
-.tag-suggestions {
+#createQuestion .tag-suggestions {
   position: absolute;
   width: 100%;
   max-height: 100px;
@@ -175,7 +175,7 @@ textarea {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.tag-suggestion {
+#createQuestion .tag-suggestion {
   display: flex;
   align-items: center;
   width: 100%;
@@ -189,15 +189,15 @@ textarea {
   font-size: 1.4rem;
 }
 
-.tag-suggestion:hover {
+#createQuestion .tag-suggestion:hover {
   background-color: #f0f0f0;
 }
 
-.tag-suggestion .check-icon {
+#createQuestion .tag-suggestion .check-icon {
   margin-right: 0.5rem;
   color: var(--green);
 }
-.no-tags-message {
+#createQuestion .no-tags-message {
   font-size: 1.6rem;
   color: var(--accent-blue);
   text-align: center;
@@ -205,10 +205,10 @@ textarea {
   padding: 0.4rem;
 }
 @media (max-width: 475px) {
-  .submit-form {
+  #createQuestion .submit-form {
     width: 100%;
   }
-  form {
+  #createQuestion form {
     width: 100%;
   }
 }
