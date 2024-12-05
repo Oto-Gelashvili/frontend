@@ -6,7 +6,7 @@ interface Review {
   reviewerName: string;
   rating: number;
   comment: string;
-  date: string; // ISO format or display string
+  date: string;
 }
 
 interface ReviewCardProps {
