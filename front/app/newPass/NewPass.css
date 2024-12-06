@@ -1,0 +1,110 @@
+.newPassPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.newPassPage .newPassContainer {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px 24px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.newPassPage .title {
+  color: var(--black);
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 4rem;
+}
+
+.newPassPage .desc {
+  font-size: 1.4rem;
+  color: var(--accent-gray);
+}
+
+.newPassPage .form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+.newPassPage .label {
+  display: block;
+  font-weight: 400;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: var(--gray);
+}
+
+.newPassPage .input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--gray);
+  background-color: #ffffff;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+  color: var(--gray);
+}
+
+.newPassPage .input:focus {
+  border-color: var(--accent-blue);
+}
+
+/* Password Group */
+.newPassPage .passwordGroup {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.newPassPage .passwordGroup .password-input {
+  position: relative;
+}
+
+.newPassPage .passwordGroup .password-input .eye-icon {
+  color: var(--gray);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 50%;
+  right: 3%;
+  font-size: 1.4rem;
+  transform: translateY(-50%);
+}
+
+.newPassPage .error-text {
+  color: red;
+  margin-top: 5px;
+}
+
+.newPassPage .resetPassword {
+  margin-top: 50px;
+  width: 100%;
+  padding: 20px 24px;
+  background-color: var(--blue);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.newPassPage .resetPassword:hover {
+  background-color: var(--accent-blue);
+}
+
+.newPassPage .resetPassword:disabled {
+  opacity: 0.7;
+}
