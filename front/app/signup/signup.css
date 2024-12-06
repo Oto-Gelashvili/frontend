@@ -1,0 +1,161 @@
+.signupPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.signupPage .signupContainer {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px 24px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.signupPage .title {
+  color: var(--black);
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 4rem;
+}
+
+.signupPage .form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signupPage .inputGroup {
+  margin-bottom: 15px;
+}
+
+.signupPage .label {
+  display: block;
+  font-weight: 400;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: var(--gray);
+}
+
+.signupPage .input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--gray);
+  background-color: #ffffff;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+  color: var(--gray);
+}
+
+.signupPage .input:focus {
+  border-color: var(--accent-blue);
+}
+
+/* Password Group */
+.signupPage .passwordGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.signupPage .passwordGroup .password-input {
+  position: relative;
+}
+
+.signupPage .passwordGroup .password-input .eye-icon {
+  display: flex;
+  align-items: center;
+  color: var(--gray);
+  position: absolute;
+  top: 50%;
+  right: 3%;
+  font-size: 1.4rem;
+  transform: translateY(-50%);
+}
+
+.signupPage .password-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.signupPage .forgotPassword {
+  font-size: 1.2rem;
+  color: var(--gray);
+  font-weight: 600;
+}
+
+.signupPage .forgotPassword:hover {
+  text-decoration: underline;
+}
+
+.signupPage .signup {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0 2rem;
+}
+
+.signupPage .signupLeft {
+  color: var(--gray);
+  font-size: 1.2rem;
+}
+
+
+.signupPage .signupLink {
+  color: var(--gray);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.signupPage .signupLink:hover {
+  text-decoration: underline;
+}
+
+.signupPage .login {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0 2rem;
+}
+
+.signupPage .loginLeft {
+  color: var(--gray);
+  font-size: 1.2rem;
+}
+
+.signupPage .loginLink {
+  color: var(--gray);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.signupPage .loginLink:hover {
+  text-decoration: underline;
+}
+
+.signupPage .signupButton {
+  margin-top: 50px;
+  width: 100%;
+  padding: 20px 24px;
+  background-color: var(--blue);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.6rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signupPage .signupButton:hover {
+  background-color: var(--accent-blue);
+}
