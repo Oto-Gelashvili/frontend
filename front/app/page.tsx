@@ -1,10 +1,21 @@
-import Link from "next/link";
+import React from 'react';
+import PostList from './Components/PostList/PostList';
+import ReviewList from './Components/ReviewList/ReviewList';
+import styles from './page.module.css';
 
-export default function Home() {
+const MainPage: React.FC = () => {
   return (
     <>
-      <h1>WELCOME Frontend Team!</h1>
-      <Link href="/login">Login</Link>
+      <div className={styles.main_wrapper}>
+        <div className={styles.post_wrapper}>
+          <PostList />
+        </div>
+        <div className={styles.review_wrapper}>
+          <ReviewList />
+        </div>
+      </div>
     </>
   );
-}
+};
+
+export default MainPage;

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "author": "John Doe",
+    "answers": 10,
+    "name": "Understanding React",
+    "tags": ["React", "JavaScript", "Frontend"],
+    "description": "Dive deep into the fundamentals of React, including JSX, components, state, and props. This post is perfect for developers who are just starting their journey with React and want to build interactive and dynamic user interfaces.",
+    "datetime": "2024-12-01 - 10:00"
+  },
+  {
+    "id": 2,
+    "author": "Jane Smith",
+    "answers": 25,
+    "name": "Mastering Next.js",
+    "tags": ["Next.js", "SSR", "Web Development"],
+    "description": "Explore the advanced features of Next.js, such as server-side rendering, API routes, and static site generation. This post provides insights into how Next.js simplifies complex web development challenges while enhancing performance.",
+    "datetime": "2024-12-01 - 14:30"
+  },
+  {
+    "id": 3,
+    "author": "Alice Johnson",
+    "answers": 5,
+    "name": "CSS Modules Demystified",
+    "tags": ["CSS", "Frontend", "Styling"],
+    "description": "Learn how CSS Modules can help you manage styles in modern web applications. This post covers everything from setup to best practices, ensuring your CSS remains modular, maintainable, and conflict-free.",
+    "datetime": "2024-12-01 - 16:15"
+  },
+  {
+    "id": 4,
+    "author": "Bob Brown",
+    "answers": 8,
+    "name": "A Guide to Axios",
+    "tags": ["Axios", "API", "JavaScript"],
+    "description": "Discover the power of Axios for making API requests in JavaScript. This post walks you through its features, from basic usage to advanced scenarios like interceptors, error handling, and request cancellation.",
+    "datetime": "2024-12-01 - 18:00"
+  }
+]

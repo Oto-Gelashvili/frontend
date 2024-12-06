@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "reviewerName": "Alice Johnson",
+    "rating": 5,
+    "comment": "Highly recommend this website.",
+    "date": "2024-12-01T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "reviewerName": "Bob Smith",
+    "rating": 4,
+    "comment": "Good service.",
+    "date": "2024-11-30T12:00:00Z"
+  },
+  {
+    "id": 3,
+    "reviewerName": "Catherine Davis",
+    "rating": 3,
+    "comment": "The interface is nice.",
+    "date": "2024-11-29T15:00:00Z"
+  }
+]
