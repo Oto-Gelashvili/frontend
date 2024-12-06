@@ -79,3 +79,26 @@ a {
     color-scheme: dark;
   }
 }
+#questions {
+  width: 100%;
+  display: flex;
+  gap: 1.6rem;
+  justify-content: center;
+  flex: 1;
+}
+.pad {
+  padding: 4.8rem;
+}
+@media screen and (max-width: 1024px) {
+  .pad {
+    padding: 1rem 4.8rem;
+  }
+  .header-margin {
+    margin-top: 10rem;
+  }
+}
+@media screen and (max-width: 475px) {
+  .pad {
+    padding: 1rem 2.4rem;
+  }
+}

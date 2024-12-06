@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import './login.css';
-import Button from "../Components/Buttons";
-import Link from "next/link";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Button from '../components/Buttons';
+import Link from 'next/link';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export default function Login() {
   const [userName, setUserName] = useState<string>('');
@@ -64,11 +64,7 @@ export default function Login() {
               Sign Up
             </Link>
           </div>
-          <Button
-            className="loginButton"
-            content="Log in"
-            type="submit"
-          />
+          <Button className="loginButton" content="Log in" type="submit" />
         </form>
       </section>
     </main>

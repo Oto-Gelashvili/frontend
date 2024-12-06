@@ -1,11 +1,10 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import React, { useState } from 'react'
-import Button from '../Components/Buttons'
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import './signup.css'
-
+import Link from 'next/link';
+import React, { useState } from 'react';
+import Button from '../components/Buttons';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import './signup.css';
 
 export default function Signup() {
   const [fullname, setFullname] = useState<string>('');
@@ -13,7 +12,8 @@ export default function Signup() {
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setconfirmPassword] = useState<string>('');
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
-  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState<boolean>(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+    useState<boolean>(false);
 
   const handlePasswordToggle = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -28,7 +28,7 @@ export default function Signup() {
       <section className="signupContainer">
         <h2 className="title">Sign up</h2>
         <form className="form">
-        <div className="inputGroup">
+          <div className="inputGroup">
             <label htmlFor="fullname" className="label">
               Full Name
             </label>
@@ -57,9 +57,9 @@ export default function Signup() {
             />
           </div>
           <div className="passwordGroup">
-              <label htmlFor="password" className="label">
-                Enter Password
-              </label>
+            <label htmlFor="password" className="label">
+              Enter Password
+            </label>
             <div className="password-input">
               <input
                 className="input"
@@ -76,9 +76,9 @@ export default function Signup() {
             </div>
           </div>
           <div className="passwordGroup">
-              <label htmlFor="password" className="label">
-                Confirm Password
-              </label>
+            <label htmlFor="password" className="label">
+              Confirm Password
+            </label>
             <div className="password-input">
               <input
                 className="input"
@@ -100,13 +100,9 @@ export default function Signup() {
               Log in
             </Link>
           </div>
-          <Button
-            className="signupButton"
-            content="Sign up"
-            type="submit"
-          />
+          <Button className="signupButton" content="Sign up" type="submit" />
         </form>
       </section>
     </main>
-  )
+  );
 }

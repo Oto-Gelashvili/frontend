@@ -1,10 +1,10 @@
 #question-details {
   width: 100%;
-  padding: 3.2rem;
   display: flex;
   flex-direction: column;
   gap: 3.6rem;
   justify-content: space-around;
+  flex: 1;
 }
 #question-header {
   display: grid;
@@ -118,8 +118,8 @@
   background-color: transparent;
   color: var(--black);
   border-radius: 4px;
-  padding: 0.4rem;
   font-size: 1.4rem;
+  font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -127,7 +127,7 @@
   color: var(--gold);
 }
 #question-details .answer-input-cont {
-  padding: 3.2rem;
+  padding: 1.6rem;
   background-color: var(--blue);
   border-radius: 8px;
 }
@@ -155,6 +155,9 @@
   cursor: pointer;
   transition: 0.3s;
 }
+#question-details .answer p {
+  line-height: 1.4;
+}
 #question-details .sendBtn:hover {
   background-color: var(--accent-blue);
 }
@@ -176,9 +179,6 @@
   }
 }
 @media (max-width: 475px) {
-  #question-details {
-    padding: 2.4rem 1.6rem;
-  }
   #question-header h1 {
     font-size: 1.8rem;
   }

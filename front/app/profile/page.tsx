@@ -12,7 +12,7 @@ const userData = {
 
 const ProfilePage: React.FC = () => {
   return (
-    <div id="profile-container">
+    <div id="profile-container" className="pad header-margin">
       <h1>Profile</h1>
       <div className="profile-content">
         {/* Profile Image */}

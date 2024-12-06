@@ -1,5 +1,5 @@
 'use client';
-import ReadMore from '../../components/readMore/page';
+import ReadMore from '../components/readMore/page';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { MessageCircle, Send } from 'lucide-react';
@@ -164,7 +164,7 @@ const AnswerInput: React.FC<{ onSubmitAnswer: (content: string) => void }> = ({
     <div className="answer-input-cont">
       <div className="answer-input">
         <textarea
-          rows={4}
+          rows={3}
           placeholder="Write your answer here..."
           value={answerContent}
           onChange={(e) => setAnswerContent(e.target.value)}
@@ -240,7 +240,7 @@ export default function QuestionDetailsPage() {
   };
 
   return (
-    <main id="question-details">
+    <main id="question-details" className="pad header-margin">
       <QuestionHeader question={question} />
       <div className="desc">
         <p>{question.description} </p>

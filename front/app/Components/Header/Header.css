@@ -1,8 +1,8 @@
 .navbar {
-  height: 7rem;
+  height: 10rem;
   background-color: var(--blue);
   display: flex;
-  padding: 0 4rem;
+  /* padding: 2.4rem 4.8rem; */
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
@@ -64,19 +64,21 @@
 }
 
 /* Show hamburger on smaller screens */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .navbar {
+    height: unset;
     flex-direction: row;
     align-items: flex-start;
     width: 100%;
     position: fixed;
-    padding: 1rem;
+    z-index: 10;
+    /* padding: 1rem 4.8rem; */
+    align-items: center;
   }
 
   .navbar-left {
     width: 100%;
     justify-content: space-between;
-    margin-bottom: 10px;
   }
 
   .navbar-right {
@@ -103,6 +105,7 @@
     overflow: hidden;
     opacity: 0;
     flex-direction: column;
+    border-top: 1px solid var(--accent-gray);
     transition:
       top 0.3s ease,
       height 0.3s ease,
@@ -110,9 +113,11 @@
   }
 
   .search-container.active {
-    top: 60px;
-    height: 200px;
+    top: 7rem;
+    height: fit-content;
+    padding: 2.4rem;
     opacity: 1;
+    z-index: 1111;
   }
 
   .hamburger-menu {
@@ -136,11 +141,5 @@
   .navbar-right-btn {
     width: 4rem;
     height: 4rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .navbar {
-    padding: 0.4rem;
   }
 }

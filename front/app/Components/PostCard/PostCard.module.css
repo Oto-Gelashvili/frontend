@@ -19,11 +19,11 @@
 }
 
 .bot_right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    color: var(--gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  color: var(--gray);
 }
 
 .title {
@@ -52,4 +52,12 @@
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.9rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.tag:hover {
+  background-color: var(--blue);
+}
+.tag:active {
+  background-color: var(--gold);
 }

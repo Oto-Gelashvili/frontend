@@ -80,7 +80,7 @@ export default function CreateQuestion() {
   };
 
   return (
-    <main id="createQuestion">
+    <main id="createQuestion" className="pad header-margin">
       <div className="submit-form">
         <h3 className="third-text stuff">Create Question</h3>
         <form onSubmit={handleSubmit} noValidate>

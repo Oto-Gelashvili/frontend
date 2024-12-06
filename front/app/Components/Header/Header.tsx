@@ -7,6 +7,7 @@ import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import { FaPlus } from 'react-icons/fa6';
 import { CgProfile } from 'react-icons/cg';
 import { FaBars } from 'react-icons/fa'; // Hamburger icon
+import Link from 'next/link';
 
 const Header = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false); // State to toggle search visibility on small screens
@@ -25,12 +26,12 @@ const Header = () => {
   };
 
   return (
-    <div className="navbar">
+    <div className="navbar pad">
       {/* Left section for logo and search */}
       <div className="navbar-left">
-        <div className="logo">
+        <Link href={'/'} className="logo">
           <CiLink />
-        </div>
+        </Link>
 
         {/* Always render the search container for larger screens */}
         <div className={`search-container ${isSearchVisible ? 'active' : ''}`}>
@@ -40,12 +41,12 @@ const Header = () => {
 
       {/* Right section for buttons and hamburger */}
       <div className="navbar-right">
-        <button className="navbar-right-btn">
+        <Link href={'Create'} className="navbar-right-btn">
           <FaPlus />
-        </button>
-        <button className="navbar-right-btn">
+        </Link>
+        <Link href={'profile'} className="navbar-right-btn">
           <CgProfile />
-        </button>
+        </Link>
 
         {/* Hamburger menu icon */}
         <button className="hamburger-menu" onClick={toggleSearch}>

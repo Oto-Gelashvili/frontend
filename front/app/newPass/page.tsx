@@ -1,15 +1,16 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import './NewPass.css'
-import Button from '../Components/Buttons'
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import React, { useState } from 'react';
+import './NewPass.css';
+import Button from '../components/Buttons';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export default function NewPass() {
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
-  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState<boolean>(false);
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+    useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<string>('');
 
   const handlePasswordToggle = () => {
@@ -20,13 +21,15 @@ export default function NewPass() {
     setIsConfirmPasswordVisible(!isConfirmPasswordVisible);
   };
 
-  const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleConfirmPasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const confirmPasswordValue = e.target.value;
     setConfirmPassword(confirmPasswordValue);
 
     // Check password match only when confirm password is not empty
     if (confirmPasswordValue && password !== confirmPasswordValue) {
-      setPasswordError("Passwords do not match");
+      setPasswordError('Passwords do not match');
     } else {
       setPasswordError('');
     }
@@ -38,7 +41,7 @@ export default function NewPass() {
 
     // If confirm password is not empty, recheck match
     if (confirmPassword && passwordValue !== confirmPassword) {
-      setPasswordError("Passwords do not match");
+      setPasswordError('Passwords do not match');
     } else {
       setPasswordError('');
     }
@@ -47,23 +50,26 @@ export default function NewPass() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      setPasswordError("Passwords do not match");
+      setPasswordError('Passwords do not match');
       return;
     }
 
     if (password.length < 8) {
-      setPasswordError("Password must be at least 8 characters long");
+      setPasswordError('Password must be at least 8 characters long');
       return;
     }
 
-    console.log("Password reset submission");
+    console.log('Password reset submission');
   };
 
   return (
     <main className="newPassPage">
       <section className="newPassContainer">
         <h2 className="title">Create New Password</h2>
-        <p className='desc'>Please enter and confirm your new password. You will need to login after you reset.</p>
+        <p className="desc">
+          Please enter and confirm your new password. You will need to login
+          after you reset.
+        </p>
         <form className="form" onSubmit={handleSubmit}>
           <div className="passwordGroup">
             <label htmlFor="password" className="label">
@@ -103,11 +109,7 @@ export default function NewPass() {
               </span>
             </div>
           </div>
-          {passwordError && (
-            <p className="error-text">
-              {passwordError}
-            </p>
-          )}
+          {passwordError && <p className="error-text">{passwordError}</p>}
           <Button
             className="resetPassword"
             content="Reset Password"
@@ -118,5 +120,5 @@ export default function NewPass() {
         </form>
       </section>
     </main>
-  )
+  );
 }

@@ -1,11 +1,13 @@
 .classList_button {
   width: 100%;
-  height: 3rem;
-  border-radius: 5px;
+  padding: 1.6rem 3.2rem;
+  border-radius: 8px;
+  border: 1px solid var(--gray);
   background-color: var(--blue);
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  color: var(--white);
 }
 
 .classList_button:hover {
