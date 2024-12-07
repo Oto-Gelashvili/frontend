@@ -65,51 +65,30 @@ export default function Signup() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Reset errors
-    setPasswordError('');
-    setEmailError('');
-    setFullnameError('');
-
-    // Empty input errors
-    if (!fullname.trim()) {
-      setFullnameError('Full name is required');
-      return;
-    }
+  
+    // Create an object to track all errors
+    const errors = {
+      fullname: !fullname.trim() ? 'Full name is required' : '',
+      email: !userName.trim() ? 'Email is required' : 
+             (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userName) ? 'Please enter a valid email address' : ''),
+      password: !password.trim() ? 'Password is required' : 
+                (password.length < 8 ? 'Password must be at least 8 characters long' : ''),
+      confirmPassword: password !== confirmPassword ? 'Passwords do not match' : ''
+    };
+  
+    // Set all error states
+    setFullnameError(errors.fullname);
+    setEmailError(errors.email);
+    setPasswordError(errors.password || errors.confirmPassword);
+  
+    // Check if any errors exist
+    const hasErrors = Object.values(errors).some(error => error !== '');
     
-    if (!userName.trim()) {
-      setEmailError('Email is required');
-      return;
+    if (hasErrors) {
+      return; // Stop form submission if there are errors
     }
-
-    if (!password.trim()) {
-      setPasswordError('Password is required');
-      return;
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(userName)) {
-      setEmailError('Please enter a valid email address');
-      return;
-    }
-
-    // Password validation
-    if (!password.trim()) {
-      setPasswordError('Password is required');
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setPasswordError('Passwords do not match');
-      return;
-    }
-
-    if (password.length < 8) {
-      setPasswordError('Password must be at least 8 characters long');
-      return;
-    }
-
+  
+    // If no errors, proceed with form submission
     console.table({ 'Full Name': fullname, 'Email': userName, 'Password': password });
   };
 
@@ -185,9 +164,10 @@ export default function Signup() {
                 {isConfirmPasswordVisible ? <FaEye /> : <FaEyeSlash />}
               </span>
             </div>
+            {passwordError && <p className="error-text">{passwordError}</p>}
           </div>
 
-          {passwordError && <p className="error-text">{passwordError}</p>}
+          
 
           <div className="login">
             <div className="loginLeft">Already a user?</div>
