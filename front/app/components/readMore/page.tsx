@@ -1,12 +1,12 @@
 'use client';
 import React, { useState } from 'react';
 
-interface ExpandProps {
+interface ReadMoreProps {
   text: string;
   maxLength?: number;
 }
 
-export default function ReadMore({ text, maxLength = 150 }: ExpandProps) {
+const ReadMore: React.FC<ReadMoreProps> = ({ text, maxLength = 150 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   // If text is shorter than maxLength, show full text
@@ -34,4 +34,6 @@ export default function ReadMore({ text, maxLength = 150 }: ExpandProps) {
       )}
     </div>
   );
-}
+};
+
+export default ReadMore;
