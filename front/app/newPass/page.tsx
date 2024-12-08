@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import './NewPass.css';
-import Button from '../components/Buttons';
+import Button from '../Components/Buttons';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export default function NewPass() {

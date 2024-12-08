@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import './login.css';
-import Button from '../components/Buttons';
+import Button from '../Components/Buttons';
 import Link from 'next/link';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 

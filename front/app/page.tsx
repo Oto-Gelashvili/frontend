@@ -1,6 +1,6 @@
 import React from 'react';
-import PostList from './components/PostList/PostList';
-import ReviewList from './components/ReviewList/ReviewList';
+import PostList from './Components/PostList/PostList';
+import ReviewList from './Components/ReviewList/ReviewList';
 import styles from './page.module.css';
 
 const MainPage: React.FC = () => {
