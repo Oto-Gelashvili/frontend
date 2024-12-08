@@ -1,5 +1,5 @@
 'use client';
-import ReadMore from '../Components/ReadMore/page';
+import ReadMore from '../Components/ReadMore/ReadMore';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { MessageCircle, Send } from 'lucide-react';
