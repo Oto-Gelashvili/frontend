@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Button from '../components/Buttons';
+import Button from '../Components/Buttons';
 import './forgot.css';
 export default function Forgot() {
   const [userName, setUserName] = useState<string>('');
