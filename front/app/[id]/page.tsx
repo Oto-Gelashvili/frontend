@@ -1,252 +1,161 @@
 'use client';
-import ReadMore from '../Components/ReadMore/ReadMore';
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
-import { MessageCircle, Send } from 'lucide-react';
+import { useRouter } from 'next/router';
 import './questionDetails.css';
 
-// Types for our data structures
-interface User {
-  id: string;
-  username: string;
-  avatar?: string;
+interface Question {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  created_at: string;
 }
 
 interface Answer {
-  id: string;
-  user: User;
+  id: number;
   content: string;
-  createdAt: Date;
+  author: string;
+  created_at: string;
 }
 
-interface QuestionData {
-  id: string;
-  title: string;
-  description: string;
-  tags: string[];
-  author: User;
-  createdAt: Date;
-  answers: Answer[];
-}
+const QuestionDetailsPage: React.FC = () => {
+  const router = useRouter();
+  const { id } = router.query; // Extract the `id` from the route
+  const [question, setQuestion] = useState<Question | null>(null);
+  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [newAnswer, setNewAnswer] = useState('');
 
-// Mock data with multiple questions
-const mockQuestions: QuestionData[] = [
-  {
-    id: 'q1',
-    title: 'How do I manage state in a large React application?',
-    description:
-      "I'm building a complex web application and struggling with state management. What are the best practices for handling global state in a scalable way?",
-    tags: ['React', 'JavaScript', 'State Management'],
-    author: {
-      id: 'u1',
-      username: 'DevLearner',
-      avatar: '/api/placeholder/40/40',
-    },
-    createdAt: new Date('2024-03-15T10:30:00Z'),
-    answers: [
-      {
-        id: 'a1',
-        user: {
-          id: 'u2',
-          username: 'ReactPro',
-          avatar: '/api/placeholder/40/40',
-        },
-        content:
-          'I recommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applicationsrecommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applicationsrecommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applicationsrecommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applicationsrecommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applicationsrecommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applicationsrecommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applicationsrecommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applicationsrecommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applicationsrecommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applicationsrecommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applicationsrecommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applicationsrecommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applications.',
-        createdAt: new Date('2024-03-15T11:45:00Z'),
-      },
-      {
-        id: 'a10',
-        user: {
-          id: 'u10',
-          username: 'ReactPro',
-          avatar: '/api/placeholder/40/40',
-        },
-        content:
-          'I recommend using Redux Toolkit or Zustand for global state management. They provide simple and efficient ways to handle complex state in React applications.',
-        createdAt: new Date('2024-03-15T11:45:00Z'),
-      },
-    ],
-  },
-  {
-    id: 'q2',
-    title: 'Best practices for TypeScript in large projects',
-    description:
-      "I'm looking to improve type safety and maintainability in my large-scale TypeScript project. What are some advanced TypeScript patterns and best practices?",
-    tags: ['TypeScript', 'Best Practices', 'Large-scale Development'],
-    author: {
-      id: 'u3',
-      username: 'TypeScriptEnthusiast',
-      avatar: '/api/placeholder/40/40',
-    },
-    createdAt: new Date('2024-03-16T14:20:00Z'),
-    answers: [
-      {
-        id: 'a2',
-        user: {
-          id: 'u4',
-          username: 'TypeScriptGuru',
-          avatar: '/api/placeholder/40/40',
-        },
-        content:
-          'Consider using mapped types, conditional types, and creating custom type guards. Implement strict null checks and use interfaces for complex type definitions.',
-        createdAt: new Date('2024-03-16T15:30:00Z'),
-      },
-    ],
-  },
-  {
-    id: 'q3',
-    title: 'Optimizing performance in Next.js applications',
-    description:
-      "What are the most effective strategies for improving performance and reducing load times in a Next.js application? I'm looking for both client-side and server-side optimization techniques.",
-    tags: ['Next.js', 'Performance', 'Web Development'],
-    author: {
-      id: 'u5',
-      username: 'WebPerformanceNerd',
-      avatar: '/api/placeholder/40/40',
-    },
-    createdAt: new Date('2024-03-17T09:45:00Z'),
-    answers: [
-      {
-        id: 'a3',
-        user: {
-          id: 'u6',
-          username: 'NextJsExpert',
-          avatar: '/api/placeholder/40/40',
-        },
-        content:
-          'Focus on code splitting, implementing static site generation (SSG), and using incremental static regeneration (ISR). Optimize images, minimize client-side JavaScript, and leverage Next.js built-in performance features.',
-        createdAt: new Date('2024-03-17T11:00:00Z'),
-      },
-    ],
-  },
-];
-
-// Components
-const QuestionHeader: React.FC<{ question: QuestionData }> = ({ question }) => {
-  return (
-    <div id="question-header">
-      <h1>{question.title}</h1>
-      <div className="quest-info">
-        <span>Asked by {question.author.username}</span>
-        <span>
-          {new Date(question.createdAt).toLocaleDateString('en-US', {
-            month: '2-digit',
-            day: '2-digit',
-            year: 'numeric',
-          })}
-        </span>
-      </div>
-      <div className="tags">
-        {question.tags.map((tag) => (
-          <span className="tag" key={tag}>
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const AnswerInput: React.FC<{ onSubmitAnswer: (content: string) => void }> = ({
-  onSubmitAnswer,
-}) => {
-  const [answerContent, setAnswerContent] = useState('');
-
-  const handleSubmit = () => {
-    if (answerContent.trim()) {
-      onSubmitAnswer(answerContent);
-      setAnswerContent('');
-    }
-  };
-
-  return (
-    <div className="answer-input-cont">
-      <div className="answer-input">
-        <textarea
-          rows={3}
-          placeholder="Write your answer here..."
-          value={answerContent}
-          onChange={(e) => setAnswerContent(e.target.value)}
-          className="answer-field"
-        />
-        <button onClick={handleSubmit} className="sendBtn">
-          <Send size={24} />
-        </button>
-      </div>
-    </div>
-  );
-};
-
-const AnswerList: React.FC<{ answers: Answer[] }> = ({ answers }) => {
-  return (
-    <div className="answer-cont">
-      <h2>
-        <MessageCircle /> {answers.length} Answers
-      </h2>
-      {answers.map((answer) => (
-        <div className="answer" key={answer.id}>
-          <div className="answer-header-cont">
-            <div className="user-info-cont">
-              <img src={answer.user.avatar} alt={answer.user.username} />
-              <p>{answer.user.username}</p>
-            </div>
-            <p className="answer-date">
-              {new Date(answer.createdAt).toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: 'numeric',
-              })}
-            </p>
-          </div>
-          <ReadMore text={answer.content} maxLength={300} />
-        </div>
-      ))}
-    </div>
-  );
-};
-
-export default function QuestionDetailsPage() {
-  const { id } = useParams();
-  const [question, setQuestion] = useState<QuestionData | null>(null);
-
+  // Fetch question and answers data
   useEffect(() => {
-    if (id) {
-      const selectedQuestion = mockQuestions.find((q) => q.id === id);
-      setQuestion(selectedQuestion || null);
-    }
-  }, [id]);
+    const fetchQuestionDetails = async () => {
+      try {
+        setIsLoading(true);
 
-  if (!question) {
-    return <div>Question not found</div>;
-  }
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+          throw new Error('Authorization token is missing');
+        }
 
-  const handleSubmitAnswer = (content: string) => {
-    const newAnswer: Answer = {
-      id: `a${question.answers.length + 1}`,
-      user: {
-        id: 'current-user',
-        username: 'CurrentUser',
-        avatar: '/api/placeholder/40/40',
-      },
-      content,
-      createdAt: new Date(),
+        const [questionResponse, answersResponse] = await Promise.all([
+          fetch(`http://165.232.116.35:8000/api/forum/questions/${id}`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          }),
+          fetch(`http://165.232.116.35:8000/api/forum/${id}/answers`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          }),
+        ]);
+
+        if (!questionResponse.ok || !answersResponse.ok) {
+          throw new Error('Failed to fetch question details or answers');
+        }
+
+        const questionData: Question = await questionResponse.json();
+        const answersData: Answer[] = await answersResponse.json();
+
+        setQuestion(questionData);
+        setAnswers(answersData);
+      } catch (err) {
+        setError(
+          err instanceof Error ? err.message : 'An unknown error occurred'
+        );
+      } finally {
+        setIsLoading(false);
+      }
     };
 
-    setQuestion({
-      ...question,
-      answers: [...question.answers, newAnswer],
-    });
+    if (id) fetchQuestionDetails();
+  }, [id]);
+
+  // Handle answer submission
+  const handleAnswerSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const token = localStorage.getItem('authToken');
+      if (!token) {
+        throw new Error('Authorization token is missing');
+      }
+
+      const response = await fetch(
+        `http://165.232.116.35:8000/api/forum/${id}/answers`,
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ content: newAnswer }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to submit the answer');
+      }
+
+      const createdAnswer: Answer = await response.json();
+      setAnswers((prevAnswers) => [...prevAnswers, createdAnswer]);
+      setNewAnswer(''); // Clear the answer input field
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : 'An unknown error occurred'
+      );
+    }
   };
 
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!question) return <div>Question not found</div>;
+
   return (
-    <main id="question-details" className="pad header-margin">
-      <QuestionHeader question={question} />
-      <div className="desc">
-        <p>{question.description} </p>
+    <div id="question-details-container">
+      <h1>{question.title}</h1>
+      <p>{question.content}</p>
+      <p>
+        <strong>Author:</strong> {question.author}
+      </p>
+      <p>
+        <strong>Created At:</strong>{' '}
+        {new Date(question.created_at).toLocaleString()}
+      </p>
+
+      <h2>Answers</h2>
+      <div id="answers-list">
+        {answers.map((answer) => (
+          <div key={answer.id} className="answer-item">
+            <p>{answer.content}</p>
+            <p>
+              <strong>Author:</strong> {answer.author}
+            </p>
+            <p>
+              <strong>Created At:</strong>{' '}
+              {new Date(answer.created_at).toLocaleString()}
+            </p>
+          </div>
+        ))}
       </div>
-      <AnswerList answers={question.answers} />
-      <AnswerInput onSubmitAnswer={handleSubmitAnswer} />
-    </main>
+
+      <h2>Submit Your Answer</h2>
+      <form onSubmit={handleAnswerSubmit}>
+        <textarea
+          value={newAnswer}
+          onChange={(e) => setNewAnswer(e.target.value)}
+          placeholder="Write your answer here..."
+          required
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
-}
+};
+
+export default QuestionDetailsPage;
