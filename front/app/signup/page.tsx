@@ -5,6 +5,16 @@ import React, { useState } from 'react';
 import Button from '../Components/Buttons';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import './signup.css';
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
+import { AxiosError } from 'axios';
+
+interface ErrorResponse {
+  message?: string;
+  error?: string;
+}
+
+const apiUrl = process.env.NEXT_PUBLIC_SIGN_UP_URL;
 
 export default function Signup() {
   const [fullname, setFullname] = useState<string>('');
@@ -18,6 +28,10 @@ export default function Signup() {
   const [passwordError, setPasswordError] = useState<string>('');
   const [emailError, setEmailError] = useState<string>('');
   const [fullnameError, setFullnameError] = useState<string>('');
+
+  const [formMessage, setFormMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  const router = useRouter();
 
   const handleFullnameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFullname(e.target.value);
@@ -63,9 +77,12 @@ export default function Signup() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
   
+    // Clear previous messages
+    setFormMessage(null);
+
     // Create an object to track all errors
     const errors = {
       fullname: !fullname.trim() ? 'Full name is required' : '',
@@ -87,9 +104,43 @@ export default function Signup() {
     if (hasErrors) {
       return; // Stop form submission if there are errors
     }
+
+    try {
+      const response = await axios.post(`${apiUrl}`, {
+        'username' : fullname,
+        'email': userName,
+        password,
+        'confirm_password': confirmPassword
+      });
+
+      // console.log('Sending signup data:', {
+      //   'username' : fullname,
+      //   'email': userName,
+      //   password,
+      //   'confirm_password': confirmPassword
+      // });
+      setFormMessage({ type: 'success', text: response.data.message || 'Signup successful!' });
   
-    // If no errors, proceed with form submission
-    console.table({ 'Full Name': fullname, 'Email': userName, 'Password': password });
+      // Redirect to login page after a short delay
+      setTimeout(() => {
+        router.push('/login');
+      }, 1500);
+    } catch (error) {
+      // Cast the error as an AxiosError and define the custom ErrorResponse type
+      const axiosError = error as AxiosError<ErrorResponse>;
+  
+      // Check for the error message
+      const errorMessage = axiosError.response?.data?.message ||
+                           axiosError.response?.data?.error ||
+                           'Either Username or Email is already in use';
+  
+      setFormMessage({
+        type: 'error',
+        text: errorMessage,
+      });
+    }
+
+    
   };
 
   return (
@@ -167,7 +218,13 @@ export default function Signup() {
             {passwordError && <p className="error-text">{passwordError}</p>}
           </div>
 
-          
+          {formMessage && (
+            <p
+              className={`form-message ${formMessage.type === 'success' ? 'success' : 'error'}`}
+            >
+              {formMessage.text}
+            </p>
+          )}
 
           <div className="login">
             <div className="loginLeft">Already a user?</div>
